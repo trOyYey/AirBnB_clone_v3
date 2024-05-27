@@ -1,0 +1,13 @@
+*~
+*main*
+*__pycache__*
+*.o
+*.pyc
+*/__pycache__
+*.json
+*.csv
+*.txt
+*.swp
+test.py
+tester.py
+.env
