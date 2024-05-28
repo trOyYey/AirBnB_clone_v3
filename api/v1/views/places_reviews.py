@@ -14,7 +14,7 @@ def get_reviews(place_id):
     p = storage.get(Place, place_id)
     if p is None:
         abort(404)
-    rev = []
+    reviews = []
     for rev in p.reviews:
         rev.append(rev.to_dict())
     return jsonify(rev)
@@ -61,7 +61,7 @@ def post_review(place_id):
     dic['place_id'] = place_id
     rev = Review(**dic)
     rev.save()
-    return make_response(jsonify(review.to_dict()), 201)
+    return make_response(jsonify(rev.to_dict()), 201)
 
 
 @app_views.route('/reviews/<string:review_id>', methods=['PUT'],
@@ -78,4 +78,4 @@ def put_review(review_id):
                         'created_at', 'updated_at']:
             setattr(rev, attr, val)
     rev.save()
-    return jsonify(review.to_dict()), 200
+    return jsonify(rev.to_dict()), 200
