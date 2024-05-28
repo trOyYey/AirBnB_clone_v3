@@ -16,8 +16,8 @@ def get_reviews(place_id):
         abort(404)
     reviews = []
     for rev in p.reviews:
-        rev.append(rev.to_dict())
-    return jsonify(rev)
+        reviews.append(rev.to_dict())
+    return jsonify(reviews)
 
 
 @app_views.route('/reviews/<string:review_id>', methods=['GET'],
